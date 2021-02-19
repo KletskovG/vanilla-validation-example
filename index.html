@@ -9,12 +9,52 @@
 </head>
 <body>
   <main class="main">
-    <form action="" class="main__form">
-      <input type="text" name="username" class="main__form__input">
-      <input type="email" name="email" class="main__form__input">
-      <input class="main__form__input" type="file" name="avatar" accept="image/x-png,image/gif,image/jpeg" />
-      <!-- maybe pattern here -->
-      <input class="main__form__input" type="tel" name="phone"  />
+    <form action="" class="main__form" name="sign-up">
+      <div>
+        <!-- <label for="username">
+          Имя
+        </label> -->
+        <input 
+          class="main__form__input" 
+          name="username" 
+          type="text" 
+          placeholder="Имя"
+          required
+        />
+      </div>
+      <div>
+        <!-- <label for="email">Email</label> -->
+        <input 
+          class="main__form__input"
+          type="email" 
+          name="email" 
+          placeholder="Email"
+          required
+        >
+      </div>
+      <div>
+        <!-- <label for="avatar">Фото</label> -->
+        <input 
+          class="main__form__input"
+          name="avatar" 
+          type="file"
+          accept="image/x-png,image/gif,image/jpeg" 
+          placeholder="Фотография"
+          required
+        />
+      </div>
+      <div>
+        <!-- <label for="phone">Телефон</label> -->
+        <!-- maybe pattern here -->
+        <input
+          class="main__form__input"
+          name="phone"  
+          type="tel" 
+          placeholder="Телефон"
+          required
+        />
+      </div>
+      <button type="submit">Submit</button>
     </form>
   </main>
   <script src="./main.js" defer></script>
