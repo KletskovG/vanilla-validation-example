@@ -1,7 +1,11 @@
 window.onload = () => {
   const form = document.querySelector(".main__form");
-  form.addEventListener("submit", (e) => {
-    e.preventDefault();
+  
+  form.addEventListener("submit", validateForm);
+}
+
+function validateForm(event) {
+  event.preventDefault();
     console.log("SUBMIT")
     const form = document.forms["sign-up"];
     const username = form["username"].value;
@@ -9,6 +13,16 @@ window.onload = () => {
     const phone = form["phone"].value;
     const image = form["avatar"].files[0];
     const reader = new FileReader();
+
+    let valid = true;
+    const validationRules = [];
+
+    validationRules.forEach(rule => {
+      if (rule === false) {
+        valid = false;
+      }
+    });
+
     reader.readAsDataURL(image);
     reader.onload = () => {
       console.log(reader.result)
@@ -18,5 +32,11 @@ window.onload = () => {
     console.log(username)
     console.log(email)
     console.log(phone)
-  })  
+
+    if (valid) {
+      alert("FORM IS VALID")
+    } else {
+      event.preventDefault();
+      return;
+    }
 }
