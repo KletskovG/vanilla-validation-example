@@ -5,7 +5,6 @@ window.onload = () => {
     validateForm(event, form)
   });
   handleFileInput();
-  mockFormData();
 }
 
 function validateForm(event, form) {
@@ -68,7 +67,7 @@ function validateForm(event, form) {
     [...document.querySelectorAll(".form__error")]
       .forEach(el => el.classList.toggle("hidden", true));
     
-    alert("FORM IS VALID")
+    successAlert();
   } else {
     event.preventDefault();
     return;
@@ -86,9 +85,30 @@ function handleFileInput() {
   });
 }
 
-function mockFormData() {
-  const form = document.forms[0];
-  form["username"].value = "some";
-  form["email"].value = "some@mail.ru";
-  form["phone"].value = "99999999999"
+function successAlert() {
+  const submitButton = document.querySelector("button[type='submit']");
+  submitButton.classList.toggle("success", true);
+  submitButton.textContent = "Заполнено верно";
+
+  setTimeout(() => {
+    reset();
+  }, 2000)
+}
+
+function reset() {
+  const submitButton = document.querySelector("button[type='submit']");
+  submitButton.classList.toggle("success", false);
+  submitButton.textContent = "Отправить";
+
+  // Hide erros
+  [...document.querySelectorAll(".form__error")].forEach(el => el.classList.toggle("hidden", true));
+
+  // Clear inputs
+  const form = document.forms["sign-up"];
+  form["username"].value = "";
+  form["email"].value = "";
+  form["avatar"].files[0] = null;
+  form["avatar"].value = null;
+  document.querySelector(".filename").textContent = "";
+  form["phone"].value = null;
 }

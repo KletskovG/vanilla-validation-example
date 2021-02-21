@@ -13,25 +13,26 @@
   <main class="main">
     <h1> Форма </h1>
     <form action="" class="form" name="sign-up">
-      <div>
+      <div class="form__field">
         <input 
           class="form__input" 
           name="username" 
           type="text" 
           placeholder="Имя"
         />
-        <p class="form__error hidden"> Имя должно быть не меньше 3 символов </p>
+        <p class="form__error hidden"> Длина имени не меньше 3 символов</p>
       </div>
-      <div>
+      <div class="form__field">
         <input 
           class="form__input"
+          id="email"
           type="email" 
           name="email" 
           placeholder="Email"
         >
         <p class="form__error hidden"> Введите корректный email </p>
       </div>
-      <div>
+      <div class="form__field">
         <label 
           class="form__input"
           for="avatar"
@@ -55,14 +56,15 @@
         />
         <p class="form__error hidden">Выберите картинку</p>
       </div>
-      <div>
+      <div class="form__field">
         <input
           class="form__input"
+          id="phone"
           name="phone"  
           type="tel" 
-          placeholder="Телефон (Формат - 89191234545)"
+          placeholder="Телефон"
         />
-        <p class="form__error hidden">Введите корректный телефон</p>
+        <p class="form__error hidden">Введите корректный телефон <br> (Формат - 89191234545)</p>
       </div>
       <button  class="form__button" type="submit">Отправить</button>
     </form>
