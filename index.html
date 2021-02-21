@@ -4,11 +4,14 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form</title>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="./style.css">
+  <title>Form</title>
 </head>
 <body>
   <main class="main">
+    <h1> Форма </h1>
     <form action="" class="main__form" name="sign-up">
       <div>
         <!-- <label for="username">
@@ -21,6 +24,7 @@
           placeholder="Имя"
           required
         />
+        <p class="main__form__error"> Имя должно быть не меньше 3 символов </p>
       </div>
       <div>
         <!-- <label for="email">Email</label> -->
@@ -31,18 +35,29 @@
           placeholder="Email"
           required
         >
+        <p class="main__form__error"> Введите корректный email </p>
       </div>
-      <!-- <div>
-        
+      <div>
+        <label 
+          class="main__form__input"
+          for="avatar"
+        >
+          <img src="./photo-icon.svg" alt="Photo icon">
+          <div class="main__form__button" type="button">
+            Выберите фото
+          </div>
+        </label>  
         <input 
           class="main__form__input"
+          id="avatar"
           name="avatar" 
           type="file"
           accept="image/x-png,image/gif,image/jpeg" 
           placeholder="Фотография"
           required
+          style="display:none;"
         />
-      </div> -->
+      </div>
       <div>
         <!-- <label for="phone">Телефон</label> -->
         <!-- maybe pattern here -->
@@ -53,8 +68,9 @@
           placeholder="Телефон"
           required
         />
+        <p class="main__form__error">Введите корректный телефон</p>
       </div>
-      <button  class="main__form__button" type="submit">Submit</button>
+      <button  class="main__form__button" type="submit">Отправить</button>
     </form>
   </main>
   <script src="./main.js" defer></script>
