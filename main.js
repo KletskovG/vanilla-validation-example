@@ -57,7 +57,7 @@ function validateForm(event, form) {
   fields.forEach(field => {
     if (field.isValid() === false) {
       isFormValid = false;
-      const errorBlock = document.querySelector(`input[name=${field.name}] ~ .main__form__error`);
+      const errorBlock = document.querySelector(`input[name=${field.name}] ~ .form__error`);
       if (errorBlock) {
         errorBlock.classList.toggle("hidden", false);
       }
@@ -65,7 +65,7 @@ function validateForm(event, form) {
   });
 
   if (isFormValid) {
-    [...document.querySelectorAll(".main__form__error")]
+    [...document.querySelectorAll(".form__error")]
       .forEach(el => el.classList.toggle("hidden", true));
     
     alert("FORM IS VALID")

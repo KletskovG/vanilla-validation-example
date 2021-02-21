@@ -12,60 +12,59 @@
 <body>
   <main class="main">
     <h1> Форма </h1>
-    <form action="" class="main__form" name="sign-up">
+    <form action="" class="form" name="sign-up">
       <div>
         <input 
-          class="main__form__input" 
+          class="form__input" 
           name="username" 
           type="text" 
           placeholder="Имя"
         />
-        <p class="main__form__error hidden"> Имя должно быть не меньше 3 символов </p>
+        <p class="form__error hidden"> Имя должно быть не меньше 3 символов </p>
       </div>
       <div>
         <input 
-          class="main__form__input"
+          class="form__input"
           type="email" 
           name="email" 
           placeholder="Email"
         >
-        <p class="main__form__error hidden"> Введите корректный email </p>
+        <p class="form__error hidden"> Введите корректный email </p>
       </div>
       <div>
         <label 
-          class="main__form__input"
+          class="form__input"
           for="avatar"
         >
-          <div class="main__form__input__select">
+          <div class="form__input__select">
             <img src="./photo-icon.svg" alt="Photo icon">
-            <div class="main__form__button" type="button">
+            <div class="form__button" type="button">
               Выберите фото
             </div>
           </div>
           <span class="filename"></span>
         </label>
         <input 
-          class="main__form__input"
+          class="form__input"
           id="avatar"
           name="avatar" 
           type="file"
-          accept="image/x-png,image/gif,image/jpeg" 
+          accept="image/*" 
           placeholder="Фотография"
           style="display:none;"
         />
-        <p class="main__form__error hidden">Выберите картинку</p>
+        <p class="form__error hidden">Выберите картинку</p>
       </div>
       <div>
-        <!-- maybe pattern here -->
         <input
-          class="main__form__input"
+          class="form__input"
           name="phone"  
           type="tel" 
-          placeholder="Телефон"
+          placeholder="Телефон (Формат - 89191234545)"
         />
-        <p class="main__form__error hidden">Введите корректный телефон</p>
+        <p class="form__error hidden">Введите корректный телефон</p>
       </div>
-      <button  class="main__form__button" type="submit">Отправить</button>
+      <button  class="form__button" type="submit">Отправить</button>
     </form>
   </main>
   <script src="./main.js" defer></script>
