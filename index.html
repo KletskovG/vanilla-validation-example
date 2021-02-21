@@ -14,39 +14,36 @@
     <h1> Форма </h1>
     <form action="" class="main__form" name="sign-up">
       <div>
-        <!-- <label for="username">
-          Имя
-        </label> -->
         <input 
           class="main__form__input" 
           name="username" 
           type="text" 
           placeholder="Имя"
-          required
         />
-        <p class="main__form__error"> Имя должно быть не меньше 3 символов </p>
+        <p class="main__form__error hidden"> Имя должно быть не меньше 3 символов </p>
       </div>
       <div>
-        <!-- <label for="email">Email</label> -->
         <input 
           class="main__form__input"
           type="email" 
           name="email" 
           placeholder="Email"
-          required
         >
-        <p class="main__form__error"> Введите корректный email </p>
+        <p class="main__form__error hidden"> Введите корректный email </p>
       </div>
       <div>
         <label 
           class="main__form__input"
           for="avatar"
         >
-          <img src="./photo-icon.svg" alt="Photo icon">
-          <div class="main__form__button" type="button">
-            Выберите фото
+          <div class="main__form__input__select">
+            <img src="./photo-icon.svg" alt="Photo icon">
+            <div class="main__form__button" type="button">
+              Выберите фото
+            </div>
           </div>
-        </label>  
+          <span class="filename"></span>
+        </label>
         <input 
           class="main__form__input"
           id="avatar"
@@ -54,21 +51,19 @@
           type="file"
           accept="image/x-png,image/gif,image/jpeg" 
           placeholder="Фотография"
-          required
           style="display:none;"
         />
+        <p class="main__form__error hidden">Выберите картинку</p>
       </div>
       <div>
-        <!-- <label for="phone">Телефон</label> -->
         <!-- maybe pattern here -->
         <input
           class="main__form__input"
           name="phone"  
           type="tel" 
           placeholder="Телефон"
-          required
         />
-        <p class="main__form__error">Введите корректный телефон</p>
+        <p class="main__form__error hidden">Введите корректный телефон</p>
       </div>
       <button  class="main__form__button" type="submit">Отправить</button>
     </form>

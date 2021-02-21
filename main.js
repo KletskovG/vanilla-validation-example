@@ -1,46 +1,94 @@
 window.onload = () => {
-  const form = document.querySelector(".main__form");
+  const form = document.forms["sign-up"]; // TODO: MAKE LOOKS SAME
   
-  form.addEventListener("submit", validateForm);
+  form.addEventListener("submit", (event) => {
+    validateForm(event, form)
+  });
+  handleFileInput();
+  mockFormData();
 }
 
-function validateForm(event) {
+function validateForm(event, form) {
   event.preventDefault();
-    console.log("SUBMIT")
-    const form = document.forms["sign-up"];
-    const username = form["username"].value;
-    const email = form["email"].value;
-    const phone = form["phone"].value;
-    const image = form["avatar"].files[0];
-    const reader = new FileReader();
+  let isFormValid = true;
 
-    let valid = true;
-    const validationRules = [];
-
-    validationRules.forEach(rule => {
-      if (rule === false) {
-        valid = false;
+  const fields = [
+    {
+      name: "username",
+      value: form["username"].value,
+      isValid() {
+        if (this.value !== undefined && this.value !== null) {
+          return this.value.length > 3
+        }
+        return false;
+      },
+    },
+    {
+      name: "email",
+      value: form["email"].value,
+      isValid() {
+        const emailRegExp = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+        if (this.value !== undefined && this.value !== null) {
+          return emailRegExp.test(this.value)
+        }
+        return false;
+      },
+    },
+    {
+      name: "phone",
+      value: form["phone"].value,
+      isValid() {
+        if (this.value !== undefined && this.value !== null) {
+          return /^\d+$/.test(this.value) && this.value.length === 11
+        }
+        return false;
       }
-    });
-
-    reader.readAsDataURL(image);
-    reader.onload = () => {
-      console.log(reader.result)
+    },
+    {
+      name: "avatar",
+      value: form["avatar"].files[0],
+      isValid() {
+        // Because input for avatar only accepts images we should only check that file exists
+        return this.value !== undefined && this.value !== null;
+      },
     }
-    console.log(image)
-    console.log(form)
-    console.log(username)
-    console.log(email)
-    console.log(phone)
+  ]
 
-    if (valid) {
-      alert("FORM IS VALID")
-    } else {
-      event.preventDefault();
-      return;
-    }
+  fields.forEach(field => {
+    if (field.isValid() === false) {
+      isFormValid = false;
+      const errorBlock = document.querySelector(`input[name=${field.name}] ~ .main__form__error`);
+      if (errorBlock) {
+        errorBlock.classList.toggle("hidden", false);
+      }
+    } 
+  });
+
+  if (isFormValid) {
+    [...document.querySelectorAll(".main__form__error")]
+      .forEach(el => el.classList.toggle("hidden", true));
+    
+    alert("FORM IS VALID")
+  } else {
+    event.preventDefault();
+    return;
+  }
 }
 
+// Shows name of the file in avatar input
 function handleFileInput() {
-  
+  const fileInput = document.querySelector("#avatar");
+  fileInput.addEventListener("change", () => {
+    const fileNameElement = document.querySelector(".filename");
+    if (fileNameElement) {
+      fileNameElement.innerHTML = fileInput.files[0].name;
+    }
+  });
+}
+
+function mockFormData() {
+  const form = document.forms[0];
+  form["username"].value = "some";
+  form["email"].value = "some@mail.ru";
+  form["phone"].value = "99999999999"
 }
