@@ -1,11 +1,11 @@
-window.onload = () => {
+window.addEventListener("load", () => {
   const form = document.forms["sign-up"]; // TODO: MAKE LOOKS SAME
   
   form.addEventListener("submit", (event) => {
     validateForm(event, form)
   });
   handleFileInput();
-}
+})
 
 function validateForm(event, form) {
   event.preventDefault();
@@ -100,7 +100,7 @@ function reset() {
   submitButton.classList.toggle("success", false);
   submitButton.textContent = "Отправить";
 
-  // Hide erros
+  // Hide errors
   [...document.querySelectorAll(".form__error")].forEach(el => el.classList.toggle("hidden", true));
 
   // Clear inputs
