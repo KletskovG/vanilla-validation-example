@@ -12,8 +12,8 @@
 <body>
   <main class="main">
     <h1> Форма </h1>
-    <!-- TODO: THINK ABOUT SIGN UP NAME -->
     <form action="" class="form" name="sign-up">
+      <!-- TODO: THINK ABOUT FORM FIELD NAME -->
       <div class="form__field">
         <input 
           class="form__input" 
@@ -38,13 +38,13 @@
           class="form__input"
           for="avatar"
         >
-          <div class="form__input__select">
+          <div class="form__input_select">
             <img src="./photo-icon.svg" alt="Photo icon">
             <div class="form__button" type="button">
               Выберите фото
             </div>
           </div>
-          <span class="filename"></span>
+          <span class="form__input_filename"></span>
         </label>
         <input 
           class="form__input"
@@ -52,7 +52,6 @@
           name="avatar" 
           type="file"
           accept="image/*" 
-          placeholder="Фотография"
           style="display:none;"
         />
         <p class="form__error hidden">Выберите картинку</p>

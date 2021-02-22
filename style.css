@@ -32,7 +32,6 @@
   flex-direction: column;
 }
 
-/* TODO: fix this */
 .form__field {
   width: 100%;
 }
@@ -112,13 +111,13 @@ label[for="avatar"] .form__button {
   align-items: center;
 }
 
-.form__input__select {
+.form__input_select {
   width: fit-content;
   display: flex;
   align-items: center;
 }
 
-.filename {
+.form__input_filename {
   margin-left: 10px;
 }
 
@@ -135,6 +134,7 @@ label[for="avatar"] .form__button {
   visibility: hidden;
   user-select: none;
 }
+
 
 .success {
   color: var(--white-color);
