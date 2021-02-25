@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,31 +12,35 @@
 <body>
   <main class="main">
     <h1> Форма </h1>
-    <form action="" class="form" name="sign-up">
-      <!-- TODO: THINK ABOUT FORM FIELD NAME -->
+    <form class="form" name="sign-up">
       <div class="form__field">
         <input 
           class="form__input" 
+          id="username"
           name="username" 
           type="text" 
           placeholder="Имя"
+          minlength="3"
+          required
+          tabindex="1"
         />
-        <p class="form__error hidden"> Длина имени не меньше 3 символов</p>
       </div>
       <div class="form__field">
         <input 
           class="form__input"
           id="email"
-          type="email" 
           name="email" 
+          type="email" 
           placeholder="Email"
+          required
+          tabindex="2"
         >
-        <p class="form__error hidden"> Введите корректный email </p>
       </div>
       <div class="form__field">
         <label 
           class="form__input"
           for="avatar"
+          tabindex="3"
         >
           <div class="form__input_select">
             <img src="./photo-icon.svg" alt="Photo icon">
@@ -45,16 +49,15 @@
             </div>
           </div>
           <span class="form__input_filename"></span>
-        </label>
-        <input 
-          class="form__input"
-          id="avatar"
-          name="avatar" 
-          type="file"
-          accept="image/*" 
-          style="display:none;"
+          <input 
+            id="avatar"
+            name="avatar" 
+            type="file"
+            accept="image/*" 
+            required
+            tabindex="-1"
         />
-        <p class="form__error hidden">Выберите картинку</p>
+        </label>
       </div>
       <div class="form__field">
         <input
@@ -63,10 +66,14 @@
           name="phone"  
           type="tel" 
           placeholder="Телефон"
+          minlength="11"
+          maxlength="14"
+          pattern="(\+7\(\d{3}\)+\d+$|\+7+\d+$|8\(\d{3}\)+\d+$|8+\d+$)"
+          required
+          tabindex="4"
         />
-        <p class="form__error hidden"> Введите корректный телефон <br> (Формат - 89191234545) </p>
       </div>
-      <button  class="form__button" type="submit">Отправить</button>
+      <div  class="form__button submit" tabindex="5">Отправить</div>
     </form>
   </main>
   <script src="./main.js" defer></script>
