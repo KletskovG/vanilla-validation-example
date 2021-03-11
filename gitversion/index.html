@@ -18,6 +18,8 @@
           name="username" 
           type="text" 
           placeholder="Name"
+          minlength="3"
+          required
         />
       </div>
       <div class="form__field">
@@ -27,6 +29,7 @@
           name="email" 
           type="email" 
           placeholder="Email"
+          required
         />
       </div>
       <div class="form__field">
@@ -46,6 +49,7 @@
             name="avatar" 
             type="file"
             accept="image/*" 
+            required
         />
         </label>
       </div>
@@ -56,6 +60,10 @@
           name="phone"  
           type="tel" 
           placeholder="Phone"
+          minlength="11"
+          maxlength="14"
+          pattern="(\+7\(\d{3}\)+\d+$|\+7+\d+$|8\(\d{3}\)+\d+$|8+\d+$)"
+          required
         />
       </div>
       <div class="form__button submit"> Submit </div>
