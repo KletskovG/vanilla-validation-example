@@ -1,75 +1,122 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Form</title>
-  <link rel="stylesheet" href="./style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" 
+    integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" 
+    crossorigin="anonymous">
 </head>
 <body>
-  <main class="main">
-    <h1> Form </h1>
-    <form class="form" name="sign-up">
-      <div class="form__field">
-        <input 
-          class="form__input" 
-          id="username"
-          name="username" 
-          type="text" 
-          placeholder="Name"
-          minlength="3"
-          required
-        />
-      </div>
-      <div class="form__field">
-        <input 
-          class="form__input"
-          id="email"
-          name="email" 
-          type="email" 
-          placeholder="Email"
-          required
-        />
-      </div>
-      <div class="form__field">
-        <label 
-          class="form__input"
-          for="avatar"
-        >
-          <div class="form__input_select">
-            <img src="./photo-icon.svg" alt="Photo icon">
-            <div class="form__button" type="button">
-              Choose photo
+    <main>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h1 class="text-center">Список группы</h1>
+                </div>
             </div>
-          </div>
-          <span class="form__input_filename"></span>
-          <input 
-            id="avatar"
-            name="avatar" 
-            type="file"
-            accept="image/*" 
-            required
-        />
-        </label>
-      </div>
-      <div class="form__field">
-        <input 
-          class="form__input"
-          id="phone"
-          name="phone"  
-          type="tel" 
-          placeholder="Phone"
-          minlength="11"
-          maxlength="14"
-          pattern="(\+7\(\d{3}\)+\d+$|\+7+\d+$|8\(\d{3}\)+\d+$|8+\d+$)"
-          required
-        />
-      </div>
-      <div class="form__button submit"> Submit </div>
-    </form>
-  </main>
+            <table class="thead-dark">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Имя</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Возраст</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </main>
+    
+    <div class="row">
+        <div class="col-12">
+            <h1 class="text-center">Форма</h1>
+        </div>
+    </div>
+    <form>
+<div class="form-group">
+<label for="Name">Имя</label>
+<input class="form-control" id="Name" placeholder="Имя">
+</div>
 
-  <script src="./main.js"></script>
+<div class="form-group">
+    <label for="Email">Email</label>
+    <input type="email" id="Email" placeholder="Email">
+    </div>
+
+    <div class="form-group">
+        <label for="Age">Возраст</label>
+        <input type="form-control" id="Age" placeholder="Возраст">
+        </div>
+<button id="MyButton">
+
+    <form onsubmit="addRow();return false;"></form>
+        <button type="submit" class="btn btn-primary" addRow();oncklick="return false;"><Добавить</button>
+
+    </form>
+    <div id="messages">
+   
+    
+  
+    </div>
+    <script>
+
+        function addRow(){
+            let tbody = document.getElementsByTagName("tbody")[0];
+            let row = document.createElement("TR");
+        
+    
+          let tName = document.createElement("TD");
+          let tEmail = document.createElement("TD");
+          let tAge = document.createElement("TD");
+          let tid = document.createElement("TD");
+
+            
+            let Name = document.getElementById('Name').value;
+            let Email = document.getElementById('Email').value;
+            let Age = document.getElementById('Age').value;
+
+            tName.innerHTML = Name;
+            tEmail.innerHTML = Email;
+            tAge.innerHTML = Age;
+
+    
+    if((Name != "" && Name != null) &&
+   (Email != "" && Name != null)&&
+    (Age != "" && Age != null)){
+    
+        tName.innerHTML = vName;
+        tEmail.innerHTML = vEmail; 
+        tAge.innerHTML = vAge;
+            row.append(tName);
+            row.append(tEmail);
+            row.append(tAge);
+            row.append(row);
+    row.append(100)
+            console.log(tbody)
+            
+
+        } else{
+        let block_error = document.createElement("div");
+
+        block_error.classList.add('alert');
+        block_error.className +=" alert-danger";
+
+        block_error.innerHTML = "Не все поля заполнены";
+        let block_messages = document.getElementById('messages');
+        block_messages.append(block_error);
+
+        window.setTimeout(function() {
+            block_messages.remove();
+        }, 1000);
+
+        block_messages.style.cssText = " text-aling: center; ";
+        block_messages.style.marginTop = '20px';
+    }
+        document.getElementById("MyButton").onclick = function (event) {
+        addRow();
+        return false;
+        }}
+    </script>
 </body>
-</html>
+</html>     
